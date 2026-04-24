@@ -1,0 +1,99 @@
+/* ——————————————————————————————————————————————
+   Saddam Husain — Portfolio
+   design: letterpress meets terminal
+—————————————————————————————————————————————— */
+
+:root {
+  --paper: oklch(0.97 0.008 80);
+  --paper-2: oklch(0.94 0.01 80);
+  --paper-3: oklch(0.91 0.012 80);
+  --ink: oklch(0.18 0.01 50);
+  --ink-2: oklch(0.35 0.01 50);
+  --ink-3: oklch(0.55 0.008 50);
+  --rule: oklch(0.82 0.008 50);
+  --accent: oklch(0.55 0.17 25);
+  --accent-2: oklch(0.55 0.17 25 / 0.12);
+  --highlight: oklch(0.92 0.14 95);
+
+  --serif: 'Instrument Serif', 'Times New Roman', serif;
+  --mono: 'JetBrains Mono', ui-monospace, 'SF Mono', Menlo, monospace;
+  --sans: 'Inter Tight', -apple-system, system-ui, sans-serif;
+
+  --fs-mono-xs: 11px;
+  --fs-mono-s: 12px;
+  --fs-mono-m: 13px;
+  --fs-mono-l: 14px;
+  --fs-body: 15px;
+
+  --maxw: 1160px;
+  --gutter: clamp(16px, 3vw, 40px);
+
+  /* motion */
+  --dur-fast: 120ms;
+  --dur-med:  260ms;
+  --dur-slow: 620ms;
+  --dur-hero: 1000ms;
+  --ease-out: cubic-bezier(.2, .8, .2, 1);
+}
+
+[data-theme="dark"] {
+  --paper: oklch(0.16 0.008 60);
+  --paper-2: oklch(0.20 0.01 60);
+  --paper-3: oklch(0.24 0.012 60);
+  --ink: oklch(0.94 0.008 80);
+  --ink-2: oklch(0.78 0.008 70);
+  --ink-3: oklch(0.60 0.008 70);
+  --rule: oklch(0.32 0.01 60);
+  --accent: oklch(0.72 0.18 30);
+  --accent-2: oklch(0.72 0.18 30 / 0.18);
+}
+
+* { box-sizing: border-box; }
+
+html, body { margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: var(--mono);
+  font-size: var(--fs-body);
+  line-height: 1.55;
+  color: var(--ink);
+  background: var(--paper);
+  font-feature-settings: "ss01", "cv11";
+  cursor: default;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  overflow-x: clip;
+  background-image:
+    radial-gradient(ellipse 800px 600px at 20% 10%, oklch(0.98 0.01 80 / 0.6), transparent 60%),
+    radial-gradient(ellipse 600px 400px at 90% 80%, oklch(0.96 0.015 70 / 0.4), transparent 60%);
+}
+
+[data-theme="dark"] body {
+  background-image:
+    radial-gradient(ellipse 800px 600px at 20% 10%, oklch(0.22 0.01 60 / 0.6), transparent 60%),
+    radial-gradient(ellipse 600px 400px at 90% 80%, oklch(0.20 0.015 70 / 0.4), transparent 60%);
+}
+
+::selection { background: var(--accent); color: var(--paper); }
+
+a { color: inherit; text-decoration: none; text-underline-offset: 3px; position: relative; }
+a::after {
+  content: '';
+  position: absolute;
+  bottom: -1px; left: 0;
+  width: 0; height: 1px;
+  background: currentColor;
+}
+@media (prefers-reduced-motion: no-preference) {
+  a::after { transition: width 220ms var(--ease-out); }
+}
+a:hover::after { width: 100%; }
+.topnav a::after,
+.brand::after,
+a.stretch::after,
+.colophon .big a::after,
+.colophon .links a::after { content: none; }
+
+.mono { font-family: var(--mono); }
+.serif { font-family: var(--serif); font-style: italic; font-weight: 400; }
