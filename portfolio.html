@@ -549,6 +549,21 @@
         el.classList.add('in');
       }
     });
+
+    /* ——————— Jakarta clock ——————— */
+    const JKT_FMT = new Intl.DateTimeFormat('en-GB', {
+      timeZone: 'Asia/Jakarta',
+      hour: '2-digit', minute: '2-digit', second: '2-digit',
+      hour12: false
+    });
+    function fmtJKT(d) { return JKT_FMT.format(d); }
+    function tick() {
+      const t = fmtJKT(new Date());
+      const lc = document.getElementById('liveClock');
+      if (lc) lc.textContent = t + ' JKT';
+    }
+    tick();
+    setInterval(tick, 1000);
   </script>
 
 </body>
