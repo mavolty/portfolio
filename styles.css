@@ -97,3 +97,54 @@ a.stretch::after,
 
 .mono { font-family: var(--mono); }
 .serif { font-family: var(--serif); font-style: italic; font-weight: 400; }
+
+/* ———— layout ———— */
+.shell {
+  max-width: var(--maxw);
+  margin: 0 auto;
+  padding: 0 var(--gutter);
+  position: relative;
+}
+
+.rule { border: 0; border-top: 1px solid var(--rule); margin: 0; }
+.rule-dashed { border: 0; border-top: 1px dashed var(--rule); margin: 0; }
+
+/* ———— nav ———— */
+.topnav {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 22px var(--gutter);
+  font-family: var(--mono);
+  font-size: var(--fs-mono-s);
+  position: sticky; top: 0; z-index: 50;
+  background: color-mix(in oklch, var(--paper) 88%, transparent);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border-bottom: 1px solid var(--rule);
+}
+.brand { display: flex; align-items: baseline; gap: 10px; }
+.brand .mark {
+  width: 22px; height: 22px;
+  display: inline-flex; align-items: center; justify-content: center;
+  background: var(--ink); color: var(--paper);
+  font-size: 11px; font-weight: 500;
+  letter-spacing: 0; border-radius: 2px;
+  transform: translateY(3px);
+}
+.brand .name { font-weight: 500; letter-spacing: -0.01em; }
+.brand .name em { font-family: var(--serif); font-style: italic; color: var(--ink-2); font-weight: 400; margin-left: 2px;}
+.topnav ul { display: flex; gap: 28px; list-style: none; margin: 0; padding: 0; }
+.topnav ul a { color: var(--ink-2); display: inline-flex; gap: 6px; align-items: baseline; }
+.topnav ul a:hover { color: var(--ink); text-decoration: none; }
+.topnav ul a .idx { color: var(--ink-3); font-size: 10px; }
+
+/* ———— theme toggle ———— */
+.theme-toggle {
+  background: none; border: none; cursor: pointer;
+  color: var(--ink-3); font-size: 18px;
+  padding: 0;
+  font-family: inherit; line-height: 1;
+  transition: color 150ms;
+  min-width: 44px; min-height: 44px;
+  display: inline-flex; align-items: center; justify-content: center;
+}
+.theme-toggle:hover { color: var(--accent); }
