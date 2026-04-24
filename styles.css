@@ -475,3 +475,54 @@ section[id] { scroll-margin-top: 70px; }
 
 /* fired by IntersectionObserver — specificity beats hidden state */
 .js [data-animate].in { opacity: 1; transform: none; }
+
+/* ———— responsive ———— */
+@media (max-width: 860px) {
+  .topnav ul { display: none; }
+  .hero .grid { grid-template-columns: 1fr; gap: 24px; }
+  .hero .intro-right { border-left: 0; padding-left: 0; border-top: 1px solid var(--rule); padding-top: 20px;}
+  .callouts { grid-template-columns: 1fr 1fr; }
+  .callouts .item:nth-child(2) { border-right: 0; }
+  .callouts .item:nth-child(1), .callouts .item:nth-child(2) { border-bottom: 1px solid var(--rule); }
+  .now-grid { grid-template-columns: 1fr; }
+  .now-col { border-left: 0; padding-left: 0;}
+  .project { grid-column: span 12 !important; }
+  .xp-row { grid-template-columns: 80px 1fr 16px; gap: 16px;}
+  .xp-row .highlights { display: none; }
+  .colophon .grid { grid-template-columns: 1fr; }
+  .tooling-row { grid-template-columns: 1fr; gap: 8px; }
+}
+
+@media (max-width: 600px) {
+  .topnav { padding: 14px var(--gutter); }
+  .hero { padding: 40px 0 32px; }
+  .callouts { grid-template-columns: 1fr; }
+  .callouts .item { border-right: 0; border-bottom: 1px solid var(--rule); }
+  .callouts .item:last-child { border-bottom: 0; }
+  .now-list li { grid-template-columns: 70px 1fr; gap: 6px 12px; }
+  .now-list .tag { grid-column: 2; justify-self: start; margin-top: 2px; }
+  section { padding: 56px 0; }
+  .section-head { margin-bottom: 28px; flex-direction: column; align-items: flex-start; gap: 12px; }
+  .project .body { padding: 20px 16px 18px; }
+  .metric-row { grid-template-columns: 1fr; }
+  .metric-row .m { border-right: 0; border-bottom: 1px solid var(--rule); }
+  .metric-row .m:last-child { border-bottom: 0; }
+  .xp-row { grid-template-columns: 1fr 16px; gap: 10px 16px; padding: 22px 0; }
+  .xp-row .period { grid-column: 1 / -1; padding-top: 0; font-size: 10px; }
+  .xp-row .headline { grid-column: 1 / -1; }
+  .xp-row .arrow { grid-column: 2; grid-row: 1; justify-self: end; padding-top: 0; }
+  .xp-row .highlights { display: block; grid-column: 1 / -1; margin-top: 4px; font-size: var(--fs-mono-xs); }
+  .colophon { padding-top: 40px; padding-bottom: 24px; }
+  .colophon .grid { gap: 28px; margin-bottom: 28px; }
+  .colophon .big { font-size: clamp(30px, 7vw, 48px); }
+  .foot { flex-direction: column; gap: 6px; }
+}
+
+@media (max-width: 400px) {
+  :root { --gutter: 14px; }
+  .brand .name em { display: none; }
+  .hero h1 { font-size: clamp(52px, 14vw, 72px); }
+  .section-head .title { font-size: clamp(28px, 8vw, 36px); }
+  .project .name { font-size: clamp(26px, 7vw, 32px); }
+  .colophon .big { font-size: clamp(26px, 8vw, 40px); }
+}
