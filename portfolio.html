@@ -564,6 +564,28 @@
     }
     tick();
     setInterval(tick, 1000);
+
+    /* ——————— brand logo ——————— */
+    document.getElementById('brandLogo').addEventListener('click', e => {
+      e.preventDefault();
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+
+    /* ——————— g+key nav shortcuts ——————— */
+    let gPressed = false, gTimer;
+    document.addEventListener('keydown', e => {
+      if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') return;
+      if (e.key === 'g' && !gPressed) {
+        gPressed = true;
+        clearTimeout(gTimer);
+        gTimer = setTimeout(() => { gPressed = false; }, 800);
+        return;
+      }
+      if (gPressed) {
+        const map = { n: '#now', w: '#work', e: '#experience', t: '#tooling', c: '#contact' };
+        if (map[e.key]) { location.hash = map[e.key]; gPressed = false; }
+      }
+    });
   </script>
 
 </body>
