@@ -443,3 +443,35 @@ section:last-of-type { border-bottom: 0; }
   font-family: var(--mono); font-size: 11px; color: var(--ink-3);
   letter-spacing: 0.04em; text-transform: uppercase;
 }
+
+section[id] { scroll-margin-top: 70px; }
+
+/* ——————————————————————————————————————————————
+   Animation system
+   — .js class on <html> gates all hidden states
+   — prefers-reduced-motion controls transitions
+   — --i custom prop controls stagger delay
+—————————————————————————————————————————————— */
+
+.js [data-animate]       { opacity: 0; transform: translateY(14px); }
+.js [data-animate="hero"]{ opacity: 0; transform: translateY(32px); }
+.js [data-animate="fade"]{ opacity: 0; transform: none; }
+
+@media (prefers-reduced-motion: no-preference) {
+  .js [data-animate] {
+    transition:
+      opacity   var(--dur-slow) var(--ease-out),
+      transform var(--dur-slow) var(--ease-out);
+    transition-delay: calc(var(--i, 0) * 60ms);
+  }
+  .js [data-animate="hero"] { transition-duration: var(--dur-hero); }
+
+  .project { transition: background 200ms, transform 240ms var(--ease-out); }
+}
+
+@media (prefers-reduced-motion: no-preference) and (hover: hover) {
+  .project:hover { transform: translateY(-4px); }
+}
+
+/* fired by IntersectionObserver — specificity beats hidden state */
+.js [data-animate].in { opacity: 1; transform: none; }
