@@ -499,5 +499,37 @@
     </div>
   </section>
 
+  <script>
+    /* gate animation CSS — elements visible without JS */
+    document.documentElement.classList.add('js');
+
+    /* ——————— theme ——————— */
+    const ACCENT_MAP = {
+      red:  'oklch(0.55 0.17 25)',
+      ink:  'oklch(0.32 0.02 50)',
+      olive:'oklch(0.52 0.12 120)'
+    };
+    const THEME_COLOR = { light: '#f5f2ec', dark: '#27221a' };
+
+    let tweakState = {
+      theme:  localStorage.getItem('theme')  || 'light',
+      accent: localStorage.getItem('accent') || 'red',
+    };
+
+    function applyTweaks(s) {
+      document.documentElement.setAttribute('data-theme', s.theme === 'dark' ? 'dark' : 'light');
+      document.documentElement.style.setProperty('--accent', ACCENT_MAP[s.accent] || ACCENT_MAP.red);
+      document.querySelector('meta[name="theme-color"]')?.setAttribute('content', THEME_COLOR[s.theme] || THEME_COLOR.light);
+      localStorage.setItem('theme',  s.theme);
+      localStorage.setItem('accent', s.accent);
+    }
+    applyTweaks(tweakState);
+
+    document.getElementById('themeToggle').addEventListener('click', () => {
+      tweakState.theme = tweakState.theme === 'dark' ? 'light' : 'dark';
+      applyTweaks(tweakState);
+    });
+  </script>
+
 </body>
 </html>
