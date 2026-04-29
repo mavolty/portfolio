@@ -142,6 +142,33 @@ a.stretch::after,
 .topnav ul a:hover { color: var(--ink); text-decoration: none; }
 .topnav ul a .idx { color: var(--ink-3); font-size: 10px; }
 
+/* ———— nav actions ———— */
+.nav-actions { display: inline-flex; align-items: center; gap: 10px; }
+
+/* ———— resume button ———— */
+.resume-btn {
+  display: inline-flex; align-items: center; gap: 8px;
+  font-family: var(--mono); font-size: var(--fs-mono-s);
+  color: var(--paper); background: var(--ink);
+  border: 1px solid var(--ink);
+  padding: 7px 12px 7px 14px;
+  border-radius: 2px;
+  letter-spacing: 0.04em;
+  line-height: 1;
+  white-space: nowrap;
+  transition: background 150ms, color 150ms, border-color 150ms, transform 200ms var(--ease-out);
+}
+.resume-btn .r-label { font-weight: 500; }
+.resume-btn .r-icon {
+  display: inline-block;
+  font-size: 14px;
+  line-height: 1;
+  transition: transform 200ms var(--ease-out);
+}
+.resume-btn:hover { background: var(--accent); color: var(--paper); border-color: var(--accent); }
+.resume-btn:hover .r-icon { transform: translateY(2px); }
+.resume-btn::after { content: none; }
+
 /* ———— theme toggle ———— */
 .theme-toggle {
   background: none; border: none; cursor: pointer;
@@ -530,4 +557,6 @@ section[id] { scroll-margin-top: 70px; }
   .section-head .title { font-size: clamp(28px, 8vw, 36px); }
   .project .name { font-size: clamp(26px, 7vw, 32px); }
   .colophon .big { font-size: clamp(26px, 8vw, 40px); }
+  .resume-btn { padding: 7px 10px; gap: 6px; }
+  .resume-btn .r-label { display: none; }
 }
